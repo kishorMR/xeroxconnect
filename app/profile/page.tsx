@@ -18,7 +18,9 @@ interface Order {
   created_at: string
   shops: {
     name: string
-  }
+  } | {
+    name: string
+  }[] | null
 }
 
 export default function ProfilePage() {
@@ -457,7 +459,7 @@ export default function ProfilePage() {
                           {order.file_name}
                         </div>
                         <div style={{ fontSize: '12px', color: '#888', marginTop: '2px' }}>
-                          {order.shops?.name} •{' '}
+                          {Array.isArray(order.shops) ? order.shops[0]?.name : order.shops?.name} •{' '}
                           {new Date(order.created_at).toLocaleDateString('en-IN', {
                             day: 'numeric',
                             month: 'short'
