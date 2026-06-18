@@ -16,11 +16,7 @@ interface Order {
   amount: number
   file_name: string
   created_at: string
-  shops: {
-    name: string
-  } | {
-    name: string
-  }[] | null
+  shops: any
 }
 
 export default function ProfilePage() {
